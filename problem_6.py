@@ -45,6 +45,10 @@ class LinkedList:
 def union(llist_1, llist_2):
     # Your Solution Here
     list_result = LinkedList()
+    if llist_1 is None:
+        llist_1 = []
+    if llist_2 is None:
+        llist_2 = []
     ld = list_dict(llist_1, llist_2)
     for key in ld:
         list_result.append(key)
@@ -55,6 +59,10 @@ def union(llist_1, llist_2):
 
 def intersection(llist_1, llist_2):
     # Your Solution Here
+    if llist_1 is None:
+        llist_1 = []
+    if llist_2 is None:
+        llist_2 = []
     list_result = LinkedList()
     ld = list_dict(llist_1, llist_2)
     for key in ld:
@@ -86,70 +94,48 @@ def list_dict(llist_1, llist_2):
     return list_dict1
 
 
+def test(element_1, element_2):
+    if element_1 is None:
+        element_1 = []
+    if element_2 is None:
+        element_2 = []
+    linked_list_1 = LinkedList()
+    linked_list_2 = LinkedList()
+    for i in element_1:
+        linked_list_1.append(i)
+    for i in element_2:
+        linked_list_2.append(i)
+    print("Union Set:")
+    print(union(linked_list_1, linked_list_2))
+    print("Intersection Set:")
+    print(intersection(linked_list_1, linked_list_2))
+
+
 # Test case 1
 print("----------------------Test 1------------------------")
-linked_list_1 = LinkedList()
-linked_list_2 = LinkedList()
-
 element_1 = [3,2,4,35,6,65,6,4,3,21]
 element_2 = [6,32,4,9,6,1,11,21,1]
+test(element_1,element_2)
 
-for i in element_1:
-    linked_list_1.append(i)
-
-for i in element_2:
-    linked_list_2.append(i)
-
-print (union(linked_list_1,linked_list_2))
-print (intersection(linked_list_1, linked_list_2))
 
 # Test case 2
 print("----------------------Test 2------------------------")
-linked_list_3 = LinkedList()
-linked_list_4 = LinkedList()
-
 element_1 = [1,1,1,1,1,1,1]
 element_2 = [2,3,4,5,6]
+test(element_1,element_2)
 
-for i in element_1:
-    linked_list_3.append(i)
-
-for i in element_2:
-    linked_list_4.append(i)
-
-print (union(linked_list_3,linked_list_4))
-print (intersection(linked_list_3,linked_list_4))
 
 # Test case 3
 print("----------------------Test 3------------------------")
-linked_list_3 = LinkedList()
-linked_list_4 = LinkedList()
+element_1 = None
+element_2 = None
+test(element_1, element_2)
 
-element_1 = []
-element_2 = []
 
-for i in element_1:
-    linked_list_3.append(i)
-
-for i in element_2:
-    linked_list_4.append(i)
-
-print (union(linked_list_3,linked_list_4))
-print (intersection(linked_list_3,linked_list_4))
 
 # Test case 4
 print("----------------------Test 4------------------------")
-linked_list_3 = LinkedList()
-linked_list_4 = LinkedList()
-
 element_1 = [1,1,1,1,1,1,1]
-element_2 = []
+element_2 = None
+test(element_1, element_2)
 
-for i in element_1:
-    linked_list_3.append(i)
-
-for i in element_2:
-    linked_list_4.append(i)
-
-print (union(linked_list_3,linked_list_4))
-print (intersection(linked_list_3,linked_list_4))

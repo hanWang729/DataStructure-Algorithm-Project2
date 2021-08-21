@@ -12,6 +12,12 @@ class DoublyLinkedListNode:
 
 class LRU_Cache(object):
     def __init__(self, capacity=5):
+        if capacity is None:
+            print("Error, capacity should not be None. Now the capacity is default number (5)")
+            capacity = 5
+        if capacity <= 0:
+            print("Error, capacity should be positive Integer. Now the capacity is default number (5)")
+            capacity = 5
         self.dict = dict({})
         self.capacity = capacity
         self.head = DoublyLinkedListNode(None, None)
@@ -173,6 +179,28 @@ def test3():
     # ---Tail---
 
 
+# Test 4: set capacity to negative
+def test4():
+    print("--------------------------Test 4 ------------------------------")
+    our_cache = LRU_Cache(-5)  # Error, capacity should be positive Integer. Now the capacity is default number (5)
+    our_cache.set(1, 1)
+    our_cache.set(2, 2)
+    our_cache.set(3, 3)
+    print(our_cache)
+
+
+# Test 5: set capa5ty to negative
+def test5():
+    print("--------------------------Test 5 ------------------------------")
+    our_cache = LRU_Cache(None)  # Error, capacity should not be None. Now the capacity is default number (5)
+    our_cache.set(1, 1)
+    our_cache.set(2, 2)
+    our_cache.set(3, 3)
+    print(our_cache)
+
+
 test1()
 test2()
 test3()
+test4()
+test5()

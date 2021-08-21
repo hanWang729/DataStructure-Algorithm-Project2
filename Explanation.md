@@ -54,7 +54,7 @@ function **push():**
 
 **Time Complexity:** Both functions **heapify_up()** and **heapify_down()** has time complexity O(log(n)). In functions **pop() **and **push()**, the insert and pop is O(1). After insertion/pop, the  **heapify_up() / heapify_down()** is called, so the entire time complexity is O(log(n))
 
-**Space Complexity:** Same with Time Complexity
+**Space Complexity:** Since the space only relative with input size, it is O(n)
 
 ##### 2. Node Structure
 
@@ -101,6 +101,10 @@ I used a recursive structure similar with problem 2
 The goal of this problem is to implement a blockchain structure.
 
 I just follow the instruction.
+
+**Time Complexity:** the time complexity of append function is O(1)
+
+**Space Complexity**: O(n)
 
 
 

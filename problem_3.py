@@ -113,14 +113,23 @@ def huffman_encoding(data):
     # 1. Build min heap tree and huffman tree
     min_heap_tree = MinHeapTree(data)
     huffman_tree = HuffmanTree()
-    while len(min_heap_tree.data) != 1:
+    if len(min_heap_tree.data) == 1:
         node1 = min_heap_tree.pop()
-        node2 = min_heap_tree.pop()
+        node2 = Node(None, 0)
+        node2.visited = 1
         new_node = Node(None, node1.freq + node2.freq)
         new_node.left = node1
         new_node.right = node2
-        min_heap_tree.push(new_node)
-        huffman_tree.root = new_node
+        huffman_tree.root = huffman_tree.root = new_node
+    else:
+        while len(min_heap_tree.data) != 1:
+            node1 = min_heap_tree.pop()
+            node2 = min_heap_tree.pop()
+            new_node = Node(None, node1.freq + node2.freq)
+            new_node.left = node1
+            new_node.right = node2
+            min_heap_tree.push(new_node)
+            huffman_tree.root = new_node
 
     # 2. generate encoded sequence based on huffman tree (DFS traverse)
     root_node = huffman_tree.root
@@ -195,7 +204,7 @@ if __name__ == "__main__":
     test("The bird is the word", 1)
     # Test 2: None
     test("", 2)  # Error, please input a valid string
-    # Test 3: a long sentence with lots of consecutive chars
-    test("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCCCCC", 3)
+    # Test 3: a long sentence with only one char
+    test("AAAAAAAAAAAAA", 3)
     # Test 4: a long sentence with no repeat char
     test("0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!@#$%^&*()_+[]{}:;<>,.?", 4)
