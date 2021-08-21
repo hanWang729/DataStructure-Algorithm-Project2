@@ -110,21 +110,19 @@ class HuffmanTree:
 
 
 def huffman_encoding(data):
+    # 1. Build min heap tree and huffman tree
     min_heap_tree = MinHeapTree(data)
     huffman_tree = HuffmanTree()
     while len(min_heap_tree.data) != 1:
         node1 = min_heap_tree.pop()
         node2 = min_heap_tree.pop()
-        # print("Node1={}, Node2={}".format(node1.freq,node2.freq))
         new_node = Node(None, node1.freq + node2.freq)
         new_node.left = node1
         new_node.right = node2
         min_heap_tree.push(new_node)
-        # for d in min_heap_tree.data:
-        #     print(d.freq)
-        # print("____________")
         huffman_tree.root = new_node
 
+    # 2. generate encoded sequence based on huffman tree (DFS traverse)
     root_node = huffman_tree.root
     code_dict = dict({})
     while root_node.visited == 0:
@@ -142,7 +140,7 @@ def huffman_encoding(data):
             if current_node.char != "" and current_node.char is not None:
                 code_dict[current_node.char] = code_str
 
-    # print(code_dict)
+    # 3. Encode
     encoded_data = ""
     for c in data:
         encoded_data += code_dict[c]

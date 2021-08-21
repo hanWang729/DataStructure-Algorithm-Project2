@@ -114,3 +114,5 @@ For union, print all items in the dict,
 
 for intersection, only print item with value 2
 
+**Time and Space Complexity:** O(n)
+
