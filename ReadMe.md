@@ -98,5 +98,19 @@ I used a recursive structure similar with problem 2
 
 #### Problem 5: Blockchain
 
-The goal of this problem is to implement a blockchain structure
+The goal of this problem is to implement a blockchain structure.
+
+I just follow the instruction.
+
+
+
+#### Problem 6: Union and Intersection of Two Linked Lists
+
+The goal of this problem is to find union and intersection set of two sets with the format of input is linked list.
+
+I just traverse the two linked list and same the items in dictionary. If the item appears in both lists, its value in dict is 2, if only appears in one of the lists, its value is 1 (Also avoid the repeat number in one list)
+
+For union, print all items in the dict,
+
+for intersection, only print item with value 2
 
