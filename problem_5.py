@@ -6,6 +6,8 @@ import datetime
 class Block:
 
     def __init__(self, data):
+        if data is None:
+            data = ""
         self.timestamp = datetime.datetime.utcnow()
         self.data = data
         self.previous_hash = None
@@ -40,7 +42,7 @@ class BlockChain:
 
     def print(self):
         print("*******************************************")
-        print("Block Chain Size: {}".format(self.block_num + 1))
+        print("Block Chain Size: {}".format(self.block_num))
         for b in self.block_chain:
             print("[{}, {}]".format(b.timestamp, b.data))
 
@@ -50,12 +52,16 @@ class BlockChain:
             b.print()
 
 
-
-
+# Test 1
 block_chain = BlockChain()
 block1 = Block("Test Block1")
 block_chain.append(block1)
 block_chain.print()
+# Test 2
 block2 = Block("")
 block_chain.append(block2)
+block_chain.print()
+# Test 3
+block3 = Block(None)
+block_chain.append(block3)
 block_chain.print()

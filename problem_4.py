@@ -53,10 +53,10 @@ child.add_group(sub_child)
 parent.add_group(child)
 parent.add_user(sub_child_user2)
 
-print(is_user_in_group(sub_child_user, parent))
-print(is_user_in_group(sub_child_user, child))
-print(is_user_in_group(sub_child_user, sub_child))
+print(is_user_in_group(sub_child_user, parent))  # True
+print(is_user_in_group(sub_child_user, child))  # True
+print(is_user_in_group(sub_child_user, sub_child))  # True
 
-print(is_user_in_group(sub_child_user2, parent))
-print(is_user_in_group(sub_child_user2, child))
-print(is_user_in_group(sub_child_user2, sub_child))
+print(is_user_in_group(sub_child_user2, parent))  # True
+print(is_user_in_group(sub_child_user2, child))  # False
+print(is_user_in_group(sub_child_user2, sub_child))  # False

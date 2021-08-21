@@ -31,4 +31,11 @@ def find_files(suffix, path):
     return result_list
 
 
-print(find_files(".c", "."))
+# Test 1: Default test
+print(find_files(".c", "."))  # print a list of paths with the suffix of ".c"
+
+# Test 2
+print(find_files(".h", "."))  # print a list of paths with the suffix of ".h"
+
+# Test 3
+print(find_files(".test", "."))  # print an empty list

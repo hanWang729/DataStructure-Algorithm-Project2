@@ -2,16 +2,29 @@ import sys
 
 
 class MinHeapTree:
-    def __init__(self, data_str = None):
+    """
+    A helper structure to store the node.
+    The property of this structure is: The value of parent node is always smaller than the
+    values of child nodes.
+    In order to maintain the property, there are two helper function named heapify_down and heapify up.
+
+    The nodes in MinHeapTree are stored in a list following with the rule:
+        if the index of parent node is i, the index of child node is 2*i+1 and 2*i+2
+    """
+
+    def __init__(self, data_str=None):
         self.data = list()
         if data_str is not None:
             char_dict = char_frequency(data_str)
-            # print(char_dict)
             for c in char_dict:
                 new_node = Node(c, char_dict[c])
                 self.push(new_node)
 
     def heapify_down(self, index):
+        """
+        A function to maintain the property of min heap
+        :param index: The index node need to be adjust
+        """
         min_index = index
 
         for c in [index * 2 + 1, index * 2 + 2]:
@@ -23,6 +36,10 @@ class MinHeapTree:
         self.heapify_down(min_index)
 
     def heapify_up(self, index):
+        """
+        A function to maintain the property of min heap
+        :param index: The index node need to be adjust
+        """
         if index == 0:
             return
         parent_index = int((index - 1) / 2)
@@ -32,12 +49,22 @@ class MinHeapTree:
 
     # Return a min value and remove it from the heap
     def pop(self):
+        """
+        Since we always want to get the min value in the list. the min value is at index 0
+        1. we replace the value of index 0 and index -1
+        2. use list's pop function get the min value and remove it from the list
+        3. heapify down the node at index 0
+        """
         self.data[0], self.data[-1] = self.data[-1], self.data[0]
         result = self.data.pop()
         self.heapify_down(0)
         return result
 
     def push(self, new_node):
+        """
+        1. At a new node at the end of the list
+        2. Heapify up the new node
+        """
         # Add a new node into the data list
         self.data.append(new_node)
         # Maintain the min heap
@@ -78,7 +105,7 @@ class Node(object):
 
 
 class HuffmanTree:
-    def __init__(self,node=None):
+    def __init__(self, node=None):
         self.root = node
 
 
@@ -139,7 +166,6 @@ def huffman_decoding(data, tree):
     return result
 
 
-
 def char_frequency(data):
     char_dict = dict({})
     for char in data:
@@ -150,20 +176,28 @@ def char_frequency(data):
     return char_dict
 
 
-if __name__ == "__main__":
-    codes = {}
-
-    a_great_sentence = "The bird is the word"
-
+def test(data, index):
+    print("****************Test {}********************\n".format(index))
+    if data == "" or data is None:
+        print("Error, please input a valid string")
+        return -1
+    a_great_sentence = data
     print("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
     print("The content of the data is: {}\n".format(a_great_sentence))
-
     encoded_data, tree = huffman_encoding(a_great_sentence)
-
     print("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
     print("The content of the encoded data is: {}\n".format(encoded_data))
-
     decoded_data = huffman_decoding(encoded_data, tree)
-
     print("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
     print("The content of the encoded data is: {}\n".format(decoded_data))
+
+
+if __name__ == "__main__":
+    # Test 1: Default
+    test("The bird is the word", 1)
+    # Test 2: None
+    test("", 2)  # Error, please input a valid string
+    # Test 3: a long sentence with lots of consecutive chars
+    test("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCCCCC", 3)
+    # Test 4: a long sentence with no repeat char
+    test("0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!@#$%^&*()_+[]{}:;<>,.?", 4)
