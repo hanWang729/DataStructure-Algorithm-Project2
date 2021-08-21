@@ -4,7 +4,7 @@ This is project 2 of Udacity's nanoprogram: Data Structure and Algorithm
 
 
 
-#### Problem 1: LRU Cache
+## Problem 1: LRU Cache
 
 In this code, I used a combination of a doubly linked list and a dictionary to store the data. 
 
@@ -16,7 +16,7 @@ Note: Since the usage of a dictionary, the key of each data is unique. So, when 
 
 
 
-#### Problem 2: Finding Files
+## Problem 2: Finding Files
 
 This goal of this function is to find all files under a directory that has a suffix (e.g. ".c")
 
@@ -28,7 +28,7 @@ I used a recursion to complete this problem
 
 
 
-#### Problem 3: Huffman Coding
+## Problem 3: Huffman Coding
 
 This goal of this problem is to design and implement the encoder and decoder of Huffman Code.
 
@@ -84,7 +84,7 @@ This is a helper function to calculate the char frequencies in the string. The t
 
 
 
-#### Problem 4: Active Directory
+## Problem 4: Active Directory
 
 The goal of this problem is to look up whether the user is in a group
 
@@ -96,7 +96,7 @@ I used a recursive structure similar with problem 2
 
 
 
-#### Problem 5: Blockchain
+## Problem 5: Blockchain
 
 The goal of this problem is to implement a blockchain structure.
 
@@ -104,7 +104,7 @@ I just follow the instruction.
 
 
 
-#### Problem 6: Union and Intersection of Two Linked Lists
+## Problem 6: Union and Intersection of Two Linked Lists
 
 The goal of this problem is to find union and intersection set of two sets with the format of input is linked list.
 
